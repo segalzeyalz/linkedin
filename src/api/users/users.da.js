@@ -75,14 +75,14 @@ const update = (
 
 const create = (name = '', title = '', company = '', skills = [], created = new Date().now) => {
   const deferred = Q.defer();
-  const user = new user({
+  const user = new users({
     name,
     title,
     company,
     skills,
     created
   });
-  users.save((err, savedUser) => {
+  user.save((err, savedUser) => {
     if (err) deferred.reject(err);
 
     deferred.resolve(savedUser);

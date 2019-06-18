@@ -2,15 +2,15 @@ import UsersDa from "./users.da";
 
 const getAll = (req, res) => {
   //checking if there is no parameter
-  if (Object.keys(req.query).length===0) {
+  if (Object.keys(req.query).length === 0) {
     UsersDa.getAll()
       .then(users => res.status(200).json(users))
       .catch(() => res.sendStatus(422));
-  } else{
+  } else {
     console.log(req.query)
     UsersDa.getFindUsers(req.query)
-    .then(users => res.status(200).json(users))
-    .catch(() => res.sendStatus(422));
+      .then(users => res.status(200).json(users))
+      .catch(() => res.sendStatus(422));
   }
 }
 
@@ -39,14 +39,14 @@ const update = (req, res) => {
     .catch(() => res.sendStatus(422));
 }
 
-const create = (req, res) => {
+function create(req, res) {
+  console.log(req.body)
   const {
     name,
     title = '',
     company = '',
     skills = []
   } = req.body;
-
   UsersDa.create(name, title, company, skills)
     .then(user => res.status(200).json(user))
     .catch(() => res.sendStatus(422));
