@@ -1,12 +1,5 @@
 import UsersDa from "./users.da";
 
-export default {
-    getAll,
-    update,
-    create,
-    remove
-};
-
 const getAll = (req, res) => () => {
     UsersDa.getAll()
         .then(users => res.status(200).json(users))
@@ -37,7 +30,7 @@ const create = (req, res) => () => {
     skills = []
   } = req.body;
 
-  UsersDa.create(name, title, company, user)
+  UsersDa.create(name, title, company, skills)
     .then(user => res.status(200).json(user))
     .catch(() => res.sendStatus(422));
 }
@@ -51,3 +44,10 @@ function remove(req, res) {
     .then(() => res.sendStatus(200))
     .catch(() => res.sendStatus(422));
 }
+
+export default {
+    getAll,
+    update,
+    create,
+    remove
+};

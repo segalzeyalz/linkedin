@@ -34,7 +34,7 @@ function loadConfig() {
     );
   }
 
-  console.log('[INFO] config loaded for environment: ', env);
+  //console.log('[INFO] config loaded for environment: ', env);
 
   // merge default config with environment specific config
   return Object.assign({}, defaultConfig, envConfig[env]);

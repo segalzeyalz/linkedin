@@ -25,7 +25,7 @@ class Server {
       this.config.db,
       err => {
         if (err) {
-          console.log(`[MongoDB] Failed to connect. ${err}`);
+          console.Error(`[MongoDB] Failed to connect. ${err}`);
         } else {
           console.log(`[MongoDB] connected: ${this.config.db}`);
 
