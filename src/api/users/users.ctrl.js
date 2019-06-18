@@ -40,7 +40,6 @@ const update = (req, res) => {
 }
 
 function create(req, res) {
-  console.log(req.body)
   const {
     name,
     title = '',
