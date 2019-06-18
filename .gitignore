@@ -1,6 +1,4 @@
 node_modules
-npm-debug.log
-.env
-data
+.eslintrc.js
+.travis.yml
 yarn.lock
-yarn-error.log
