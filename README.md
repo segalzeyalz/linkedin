@@ -5,8 +5,9 @@ layer and allows to perform queries.
 
 ## Getting Started
     These are examples of service Api:
-    api/Users:
-        (get)?uuid=param - return specific user that his uuid is exactly the same
+    api/v1/Users:
+        (get): - return all linkedin profile
+        (get)/:id - return specific user that his uuid is exactly the same
         (get)?name= - return all users with name that is prefix is like inserted
         (get)?name='' & title='' - return all users with prefix name and title like inserted
         (post)/add

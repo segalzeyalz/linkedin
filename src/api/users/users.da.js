@@ -10,6 +10,35 @@ const getAll = () => {
   });
   return deferred.promise;
 }
+const getFindUsers = (query) => {
+  const deferred = Q.defer();
+  const {
+    company,
+    name,
+    title
+  } = query;
+
+  const finderObj = {};
+  if (company) finderObj.company = company;
+  if (name) finderObj.name = name;
+  if (title) finderObj.title = title;
+  users.find(finderObj, (err, users) => {
+    if (err) deferred.reject(err);
+    deferred.resolve(users);
+  });
+  return deferred.promise;
+}
+const getUser = (id) => {
+  const deferred = Q.defer();
+
+  users.find({
+    _id: id
+  }, (err, users) => {
+    if (err) deferred.reject(err);
+    deferred.resolve(users);
+  });
+  return deferred.promise;
+}
 
 const update = (
   id,
@@ -44,7 +73,7 @@ const update = (
   return deferred.promise;
 }
 
-const create = () => (name = '', title = '', company = '', skills = [], created = new Date().now) => {
+const create = (name = '', title = '', company = '', skills = [], created = new Date().now) => {
   const deferred = Q.defer();
   const user = new user({
     name,
@@ -76,6 +105,8 @@ const remove = () => (id) => {
 }
 export default {
   getAll,
+  getFindUsers,
+  getUser,
   update,
   create,
   remove

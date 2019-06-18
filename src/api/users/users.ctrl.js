@@ -1,28 +1,45 @@
 import UsersDa from "./users.da";
 
-const getAll = (req, res) => () => {
+const getAll = (req, res) => {
+  //checking if there is no parameter
+  if (Object.keys(req.query).length===0) {
     UsersDa.getAll()
-        .then(users => res.status(200).json(users))
-        .catch(() => res.sendStatus(422));
+      .then(users => res.status(200).json(users))
+      .catch(() => res.sendStatus(422));
+  } else{
+    console.log(req.query)
+    UsersDa.getFindUsers(req.query)
+    .then(users => res.status(200).json(users))
+    .catch(() => res.sendStatus(422));
+  }
 }
 
-const update = (req, res) => () => {
-    const {
-        id
-    } = req.params;
-    const {
-        name,
-        title,
-        company,
-        skills
-    } = req.body;
+const getUser = (req, res) => {
+  const {
+    id
+  } = req.params;
+  UsersDa.getUser(id)
+    .then(users => res.status(200).json(users))
+    .catch(() => res.sendStatus(422));
+}
 
-    UsersDa.update(id, name, title, company, skills)
+const update = (req, res) => {
+  const {
+    id
+  } = req.params;
+  const {
+    name,
+    title,
+    company,
+    skills
+  } = req.body;
+
+  UsersDa.update(id, name, title, company, skills)
     .then(() => res.sendStatus(200))
     .catch(() => res.sendStatus(422));
 }
 
-const create = (req, res) => () => {
+const create = (req, res) => {
   const {
     name,
     title = '',
@@ -35,7 +52,7 @@ const create = (req, res) => () => {
     .catch(() => res.sendStatus(422));
 }
 
-function remove(req, res) {
+const remove = (req, res) => {
   const {
     id
   } = req.params;
@@ -46,8 +63,9 @@ function remove(req, res) {
 }
 
 export default {
-    getAll,
-    update,
-    create,
-    remove
+  getAll,
+  getUser,
+  update,
+  create,
+  remove
 };

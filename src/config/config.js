@@ -3,7 +3,7 @@
  * @type {{db: string, apiPort: number}}
  */
 const defaultConfig = {
-  db: 'mongodb://localhost:27017/es6-express-mongoose-starter',
+  db: 'mongodb://localhost:27017/linkedin',
   apiPort: 3000
 };
 

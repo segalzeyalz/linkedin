@@ -5,7 +5,7 @@
   "main": "src/server.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/patrickvaler/es6-express-mongoose-starter.git"
+    "url": "https://github.com/segalzeyalz/linkedin.git"
   },
   "author": "Patrick Valer <hello@patrickvaler.ch>",
   "license": "MIT",

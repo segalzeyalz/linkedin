@@ -12,7 +12,7 @@ router
 
 router
     .route("/users/:id")
-
+    .get(ctrl.getUser)
     // DELETE /api/v1/users/:id - Delete user
     .delete(ctrl.remove)
 
