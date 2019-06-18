@@ -20,10 +20,10 @@ layer and allows to perform queries.
 
 ### Installing
 
-First, clone the github libary: 
+First, clone the github library: 
+    
     git clone https://github.com/segalzeyalz/linkedin.git
-
-    then install libaries and dependacies using yarn:
+    then install libraries and dependencies using yarn:
         yarn
     and them just run it!
         yarn start
